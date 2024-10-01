@@ -44,9 +44,19 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin: 1rem;
+  margin: 1rem 2rem;
 }
 h1{
-  text-align: center;
-  margin-top: 2rem;
+  text-align: start;
+  margin: 6rem 2rem;
+}
+.home-page-products{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  margin: 5rem;
+}
+footer{
+  margin: 2rem;
 }

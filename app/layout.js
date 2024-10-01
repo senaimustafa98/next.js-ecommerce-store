@@ -1,4 +1,5 @@
 import './globals.css';
+import Image from 'next/image';
 import localFont from 'next/font/local';
 import Link from 'next/link';
 
@@ -27,13 +28,23 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header>
+        <nav><Link href="/">
+        <Image
+        src="/logo.svg"
+        alt="UpLeveled"
+        height={50}
+        width={150}
+      />
+        </Link></nav>
         <nav><Link href="/">Home</Link></nav>
         <nav><Link href="/products">Products</Link></nav>
         <nav><Link href="/cart">Cart</Link></nav>
         <nav><Link href="/checkout">Checkout</Link></nav>
+
         </header>
 
         <main>{children}</main>
+        <footer>UpLeveled Store</footer>
       </body>
     </html>
   );
