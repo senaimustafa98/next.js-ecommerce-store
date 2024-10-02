@@ -44,7 +44,11 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin: 1rem 2rem;
+  margin: 1rem auto;
+  border-bottom: 2px grey solid;
+  padding: 1em auto;
+  background: rgb(112,112,231);
+  background: linear-gradient(187deg, rgba(112,112,231,0.39539565826330536) 0%, rgba(0,212,255,1) 0%, rgba(254, 253, 255, 0) 100%);
 }
 h1{
   text-align: start;
@@ -58,5 +62,6 @@ h1{
   margin: 5rem;
 }
 footer{
-  margin: 2rem;
+  margin: 2rem auto;
+  border-top: 2px rgb(214, 214, 214) solid;
 }
