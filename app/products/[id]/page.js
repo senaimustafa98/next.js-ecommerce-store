@@ -2,8 +2,8 @@ import React from 'react';
 import { getProduct} from '../../../database/products.js';
 import Image from 'next/image.js';
 
-export async function generateMetadata(props) {
-  const product = getProduct(Number((await props.params).id));
+export async function generateMetaData(props) {
+  const product = getProduct(Number((await props.params).id)); // fetching product based on id
   return {
     title: product.name,
     description: 'This is my single product page ',
@@ -11,15 +11,11 @@ export async function generateMetadata(props) {
 }
 
 
-
 export default async function ProductPage(props) {
-  const product = getProduct(Number((await props.params).id));
-
-
-
-
-
-
+  const product = getProduct(Number((await props.params).id)); // extracting id from params and using Number to get it as a number not a string
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
   return (
     <div>
