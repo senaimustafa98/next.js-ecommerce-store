@@ -5,9 +5,24 @@ export default function ProductList({ products }) {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {  // Add product to cart function
-    setCartItems((prevItems) => [...prevItems, product]); // Adding the product to the previous state (already existing products)
-    localStorage.setItem('cartItems', JSON.stringify([...cartItems, product])); // Update local stage with cart items
-  };
+    const foundProduct = cartItems.find((item) => item.id === product.id);
+    if (foundProduct) {
+    const updatedCart = cartItems.map((item) =>
+      item.id === product.id
+        ? { ...item, quantity: item.quantity + 1 } // Increment quantity if found item by id exists
+        : item
+    );
+    setCartItems(updatedCart);
+    // Update local state with cart items
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Update local storage
+
+  } else {
+    const newCart = [...cartItems, { ...product, quantity: 1 }];
+    setCartItems(newCart);
+    localStorage.setItem('cartItems', JSON.stringify(newCart));
+  }
+};
+
 
   return (
     <div>
