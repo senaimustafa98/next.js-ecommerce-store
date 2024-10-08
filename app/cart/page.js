@@ -13,6 +13,7 @@ export default function CartPage() {
     setCartItems(storedItemsInCart);}
   }, []);
 
+
   // Remove item function
   const removeFromCart = (productId) => {
     const foundProduct = cartItems.find((item) => item.id === productId);

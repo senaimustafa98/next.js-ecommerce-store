@@ -4,7 +4,7 @@ const products = [
   {
     id: 1,
     name: 'Product1',
-    price: 1_999_999.99,
+    price: 9_999.99,
   },
   {
     id: 2,
