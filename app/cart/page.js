@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { getCartCookie, setCartCookie } from '../utils/cookies';
+import styles from './cart.module.css'
+import Image from 'next/image';
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -33,17 +35,37 @@ export default function CartPage() {
     setCartCookie(updatedCart);
   };
 
+  // Map each product ID to a local image file
+  const imageMap = {
+    1: "dogbrush.jpg",
+    2: "dogtoy.jpg",
+    3: "dognail.jpg",
+    4: "dogcave.jpg",
+  };
 
   return (
     <div>
       <h1>Your Cart</h1>
       {cartItems.length ? (
         cartItems.map((item) => (
-          <div key={item.id}>
-            <h2>{item.name}</h2>
-            <p>Price: ${item.price}</p>
-            <p>Quantity: {item.quantity}</p>
-            <button onClick={() => removeItem(item.id)}>Remove</button>
+          <div key={item.id} className={styles.cartItem}>
+            <Image
+              src={`/images/${imageMap[item.id]}`}
+              alt={item.name}
+              width={200}
+              height={200}
+              className={styles.productImage}
+            />
+            <div className={styles.cartDetails}>
+              <h2>{item.name}</h2>
+              <div className={styles.cartPriceQuantity}>
+                <p>Price: ${item.price}</p>
+                <p>Quantity: {item.quantity}</p>
+              </div>
+            </div>
+            <button onClick={() => removeItem(item.id)} className={styles.removeButton}>
+              Remove
+            </button>
           </div>
         ))
       ) : (

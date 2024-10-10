@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
         </header>
 
         <main>{children}</main>
-        <footer>UpLeveled?</footer>
+        <footer>Disclaimer: This is a student project for learning purposes only. The products and images displayed are not owned by me and are not available for purchase.</footer>
       </body>
     </html>
   );

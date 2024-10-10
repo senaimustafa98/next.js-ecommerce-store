@@ -48,7 +48,7 @@ header{
   border-bottom: 2px grey solid;
   padding: 1em auto;
   background: rgb(112,112,231);
-  background: linear-gradient(187deg, rgba(112,112,231,0.39539565826330536) 0%, rgba(0,212,255,1) 0%, rgba(254, 253, 255, 0) 100%);
+  background: linear-gradient(to top, #ffffff, #928383b1);
 }
 h1{
   text-align: start;
@@ -64,4 +64,13 @@ h1{
 footer{
   margin: 2rem auto;
   border-top: 2px rgb(214, 214, 214) solid;
+  color: black;
+}
+nav a{
+font-size: 1.3rem;
+margin-right: 1rem;
+color: black;
+}
+nav a:hover{
+  color: silver;
 }
