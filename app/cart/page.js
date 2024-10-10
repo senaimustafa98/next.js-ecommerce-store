@@ -16,13 +16,13 @@ export default function CartPage() {
     loadCart();
   }, []);
 
-  const updateQuantity = (id, quantity) => {
+ /*  const updateQuantity = (id, quantity) => {
     const updatedCart = cartItems.map((item) =>
       item.id === id ? { ...item, quantity } : item
     );
     setCartItems(updatedCart);
     setCartCookie(updatedCart);
-  };
+  }; */
 
   const removeItem = (id) => {
     const updatedCart = cartItems
@@ -45,7 +45,7 @@ export default function CartPage() {
 
   return (
     <div>
-      <h1>Your Cart</h1>
+      <h1 className={styles.CartTitle}>Your Cart</h1>
       {cartItems.length ? (
         cartItems.map((item) => (
           <div key={item.id} className={styles.cartItem}>
@@ -69,7 +69,7 @@ export default function CartPage() {
           </div>
         ))
       ) : (
-        <p>Cart is empty.</p>
+        <p className={styles.emptyCart}>Cart is empty.</p>
       )}
     </div>
   );

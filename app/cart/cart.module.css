@@ -5,6 +5,7 @@
   padding: 10px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
+  background: linear-gradient(to top, #ffffff, #d0c1c1e7);
 }
 
 .productImage {
@@ -41,4 +42,13 @@
 .removeButton:hover {
   background-color: #ff0000;
 
+}
+.emptyCart{
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.CartTitle{
+  text-align: center;
+  border-bottom: 1px black solid;
 }

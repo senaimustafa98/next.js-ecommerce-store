@@ -56,15 +56,22 @@ export default function ProductList({ products }) {
           <h3 className={styles.productName}>{product.name}</h3>
           <p className={styles.productPrice}>Price: ${product.price}</p>
           <label>
-            Quantity:
-            <input
-              type="number"
-              min="1"
-              defaultValue="1"
-              onChange={(e) => product.quantity = Number(e.target.value)}
-              data-test-id="product-quantity"
-            />
-          </label>
+  Quantity:
+  <input
+    type="number"
+    min="1"
+    defaultValue="1"
+    value={product.quantity} // Assuming you're controlling the value
+    onChange={(e) => {
+      const value = Number(e.target.value);
+      // Only update if the value is greater than 0
+      if (value >= 1) {
+        product.quantity = value; // Update product quantity
+      }
+    }}
+    data-test-id="product-quantity"
+  />
+</label>
           <button
             onClick={() => addToCart(product, product.quantity || 1)}
             className={styles.addToCartButton}

@@ -2,12 +2,14 @@
 import { cookies } from 'next/headers';
 
 export async function getCartCookie() {
-  const cart = cookies().get('cart');
+  const cookieStore = await cookies();
+  const cart = cookieStore.get('cart');
   return cart ? JSON.parse(cart.value) : [];
 }
 
 export async function setCartCookie(cart) {
-  cookies().set('cart', JSON.stringify(cart), { path: '/', httpOnly: true });
+  const cookieStore = await cookies();
+  cookieStore.set('cart', JSON.stringify(cart), { path: '/', httpOnly: true });
 }
 
 export async function deleteCookie(name) {
