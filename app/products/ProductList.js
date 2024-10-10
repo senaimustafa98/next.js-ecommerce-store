@@ -1,32 +1,38 @@
-'use client';
-import { useState } from 'react';
+"use client";
+
+import { useState, useEffect } from 'react';
+import { setCartCookie, getCartCookie } from '../utils/cookies';
 
 export default function ProductList({ products }) {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {  // Add product to cart function
+  useEffect(() => {
+    const fetchCart = async () => {
+      const initialCart = await getCartCookie();
+      setCartItems(initialCart);
+    };
+    fetchCart();
+  }, []);
+
+  const addToCart = async (product) => {
     const foundProduct = cartItems.find((item) => item.id === product.id);
+    let updatedCart;
+
     if (foundProduct) {
-    const updatedCart = cartItems.map((item) => // Mapping through all the files to match id
-      item.id === product.id
-        ? { ...item, quantity: item.quantity + 1 } // Increment quantity if found item by id exists
-        : item
-    );
+      updatedCart = cartItems.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      updatedCart = [...cartItems, { ...product, quantity: 1 }];
+    }
+
     setCartItems(updatedCart);
-    // Update local state with cart items
-    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Update local storage
-
-  } else {
-    const oneCart = [...cartItems, { ...product, quantity: 1 }];
-    setCartItems(oneCart);
-    localStorage.setItem('cartItems', JSON.stringify(oneCart));
-  }
-};
-
+    await setCartCookie(updatedCart);
+  };
 
   return (
     <div>
-      {products.map((product) => (
+      {products?.map((product) => (
         <div key={product.id}>
           <h3>{product.name}</h3>
           <p>Price: ${product.price}</p>

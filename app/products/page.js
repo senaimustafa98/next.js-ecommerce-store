@@ -1,8 +1,8 @@
-import { getProducts } from '../../database/products';
+import { getProductsInsecure } from '../../database/products';
 import ProductList from './ProductList';
 
-export default function ProductsPage() {
-  const products = getProducts();
+export default async function ProductsPage() {
+  const products = await getProductsInsecure();
   return (
     <div>
       <h1>Available Products</h1>
