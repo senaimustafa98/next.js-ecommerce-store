@@ -1,0 +1,21 @@
+
+.thankYouContainer {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.thankYouTitle {
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+}
+
+.thankYouMessage {
+  font-size: 1.2rem;
+  color: #3d3c3c;
+}

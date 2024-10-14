@@ -21,7 +21,6 @@ export default function ProductPage({ product }) {
     const fetchCart = async () => {
       const initialCart = await getCartCookie();
       setCartItems(initialCart || []);
-      //console.log("Fetched cart items:", initialCart);
     };
     fetchCart();
   }, []);
@@ -38,7 +37,6 @@ export default function ProductPage({ product }) {
       updatedCart = [...cartItems, { ...product, quantity }];
     }
 
-    console.log("Updated cart items:", updatedCart);
     setCartItems(updatedCart);
     await setCartCookie(updatedCart);
   };

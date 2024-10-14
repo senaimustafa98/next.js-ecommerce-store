@@ -7,24 +7,24 @@ import Image from 'next/image';
 
 export default function ProductList({ products }) {
   const [cartItems, setCartItems] = useState([]);
+  const [quantities, setQuantities] = useState({}); // Track quantity for each product
 
   useEffect(() => {
     const fetchCart = async () => {
       const initialCart = await getCartCookie();
-      setCartItems(initialCart);
+      setCartItems(initialCart || []);
     };
     fetchCart();
   }, []);
 
-  const addToCart = async (product, quantity) => {
+  const addToCart = async (product) => {
+    const quantity = quantities[product.id] || 1; // Default to 1 if not set
     const foundProduct = cartItems.find((item) => item.id === product.id);
     let updatedCart;
 
     if (foundProduct) {
       updatedCart = cartItems.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
+        item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
       );
     } else {
       updatedCart = [...cartItems, { ...product, quantity }];
@@ -56,24 +56,22 @@ export default function ProductList({ products }) {
           <h3 className={styles.productName}>{product.name}</h3>
           <p className={styles.productPrice}>Price: ${product.price}</p>
           <label>
-  Quantity:
-  <input
-    type="number"
-    min="1"
-    defaultValue="1"
-    value={product.quantity} // Assuming you're controlling the value
-    onChange={(e) => {
-      const value = Number(e.target.value);
-      // Only update if the value is greater than 0
-      if (value >= 1) {
-        product.quantity = value; // Update product quantity
-      }
-    }}
-    data-test-id="product-quantity"
-  />
-</label>
+            Quantity:
+            <input
+              type="number"
+              min="1"
+              value={quantities[product.id] || 1} // Controlled by local state
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                if (value >= 1) {
+                  setQuantities((prev) => ({ ...prev, [product.id]: value })); // Update quantity for this product
+                }
+              }}
+              data-test-id="product-quantity"
+            />
+          </label>
           <button
-            onClick={() => addToCart(product, product.quantity || 1)}
+            onClick={() => addToCart(product)}
             className={styles.addToCartButton}
             data-test-id="product-add-to-cart"
           >

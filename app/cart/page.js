@@ -16,13 +16,6 @@ export default function CartPage() {
     loadCart();
   }, []);
 
- /*  const updateQuantity = (id, quantity) => {
-    const updatedCart = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity } : item
-    );
-    setCartItems(updatedCart);
-    setCartCookie(updatedCart);
-  }; */
 
   const removeItem = (id) => {
     const updatedCart = cartItems
@@ -33,6 +26,13 @@ export default function CartPage() {
 
     setCartItems(updatedCart);
     setCartCookie(updatedCart);
+  };
+
+
+  // Add function to remove all items
+  const removeAllItems = () => {
+    setCartItems([]);
+    setCartCookie([]); // Clear the cart cookie
   };
 
   // Map each product ID to a local image file
@@ -71,6 +71,11 @@ export default function CartPage() {
       ) : (
         <p className={styles.emptyCart}>Cart is empty.</p>
       )}
+       <button onClick={removeAllItems} className={styles.removeAllButton}>
+          Remove All
+        </button>
+
+
     </div>
   );
 }

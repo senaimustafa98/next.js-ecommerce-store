@@ -52,3 +52,18 @@
   text-align: center;
   border-bottom: 1px black solid;
 }
+.removeAllButton {
+  background-color: #f44336;
+  display: flex;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.removeAllButton:hover {
+  background-color: #000000;
+}

@@ -1,6 +1,7 @@
 'use server';
 import { cookies } from 'next/headers';
 
+// Update cart
 export async function getCartCookie() {
   const cookieStore = await cookies();
   const cart = cookieStore.get('cart');
@@ -17,7 +18,7 @@ export async function deleteCookie(name) {
   await cookieStore.delete(name);
 }
 
-
+// Retrieve the cart data
 export async function getCartItems() {
   const cartData = (await cookies()).get('cart')?.value;
   return cartData ? JSON.parse(cartData) : [];
