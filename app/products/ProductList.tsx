@@ -6,9 +6,20 @@ import styles from './ProductList.module.css';
 import Image from 'next/image';
 import Head from 'next/head';
 
-export default function ProductList({ products }) {
-  const [cartItems, setCartItems] = useState([]);
-  const [quantities, setQuantities] = useState({}); // Track quantity for each product
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  quantity?: number; // Optional property for quantity
+}
+
+interface ProductListProps {
+  products: Product[];
+}
+
+export default function ProductList({ products }: ProductListProps) {
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [quantities, setQuantities] = useState<Record<number, number>>({}); // Track quantity for each product
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -18,16 +29,14 @@ export default function ProductList({ products }) {
     fetchCart();
   }, []);
 
-  const addToCart = async (product) => {
+  const addToCart = async (product: Product) => {
     const quantity = quantities[product.id] || 1; // Default to 1 if not set
     const foundProduct = cartItems.find((item) => item.id === product.id);
     let updatedCart;
 
     if (foundProduct) {
       updatedCart = cartItems.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + quantity }
-          : item,
+        item.id === product.id ? { ...item, quantity: (item.quantity || 0) + quantity } : item,
       );
     } else {
       updatedCart = [...cartItems, { ...product, quantity }];
@@ -37,8 +46,7 @@ export default function ProductList({ products }) {
     await setCartCookie(updatedCart);
   };
 
-  // Map each product ID to a local image file
-  const imageMap = {
+  const imageMap: Record<number, string> = {
     1: 'dogbrush.jpg',
     2: 'dogtoy.jpg',
     3: 'dognail.jpg',

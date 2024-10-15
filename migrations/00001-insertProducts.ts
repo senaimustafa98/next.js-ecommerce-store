@@ -6,23 +6,23 @@ export async function up(sql: Sql) {
       products (name, description, price)
     VALUES
       (
-        'Product 1',
-        'Description for product 1',
+        'Fur Brush',
+        'A gentle brush designed to remove loose fur and prevent matting.',
         19.99
       ),
       (
-        'Product 2',
-        'Description for product 2',
+        'Chew Tug Toy',
+        'Durable toy for interactive play, perfect for chewing.',
         29.99
       ),
       (
-        'Product 3',
-        'Description for product 3',
+        'Nail Clippers',
+        'User-friendly clippers for quick and safe nail trimming.',
         39.99
       ),
       (
-        'Product 4',
-        'Description for product 4',
+        'Dog Cave Bed',
+        'Cozy bed that provides a sense of security and comfort.',
         49.99
       )
   `;
@@ -33,10 +33,10 @@ export async function down(sql: Sql) {
     DELETE FROM products
     WHERE
       name IN (
-        'Product 1',
-        'Product 2',
-        'Product 3',
-        'Product 4'
+        'Fur Brush',
+        'Chew Tug Toy',
+        'Nail Clippers',
+        'Dog Cave Bed'
       );
   `;
 }

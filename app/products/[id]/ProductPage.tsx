@@ -7,16 +7,30 @@ import { notFound } from 'next/navigation';
 import styles from './product.module.css';
 import Head from 'next/head';
 
-const imageMap = {
+// Define product interface
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+}
+
+interface ProductPageProps {
+  product: Product;
+}
+
+const imageMap: Record<number, string> = {
   1: 'dogbrush.jpg',
   2: 'dogtoy.jpg',
   3: 'dognail.jpg',
   4: 'dogcave.jpg',
 };
 
-export default function ProductPage({ product }) {
-  const [cartItems, setCartItems] = useState([]);
-  const [quantity, setQuantity] = useState(1);
+export default function ProductPage({ product }: ProductPageProps) {
+
+
+  const [cartItems, setCartItems] = useState<Array<{ id: number; quantity: number; price: number }>>([]);
+  const [quantity, setQuantity] = useState<number>(1); // Specify quantity type
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -37,7 +51,7 @@ export default function ProductPage({ product }) {
           : item,
       );
     } else {
-      updatedCart = [...cartItems, { ...product, quantity }];
+      updatedCart = [...cartItems, { id: product.id, price: product.price, quantity }];
     }
 
     setCartItems(updatedCart);
@@ -48,10 +62,11 @@ export default function ProductPage({ product }) {
     notFound();
   }
 
+
   return (
     <>
       <Head>
-        <title>{product.name} - Your Store Name</title>
+        <title>{product.name} - Paw Perfect Store</title>
         <meta
           name="description"
           content={`Buy ${product.name}, a top-quality product that ${product.description}`}

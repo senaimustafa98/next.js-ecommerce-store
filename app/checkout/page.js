@@ -1,4 +1,4 @@
-import CheckOutForm from './checkoutForm.js';
+import CheckOutForm from './checkoutForm';
 import Head from 'next/head.js';
 
 export default function CheckoutPage() {

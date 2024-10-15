@@ -43,7 +43,7 @@ a {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   margin: 1rem auto;
   border-bottom: 2px grey solid;
   padding: 1em auto;

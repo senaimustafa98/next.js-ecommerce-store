@@ -37,7 +37,7 @@ export default function Home() {
               height={350}
               width={350}
             />
-            <p>Product 1</p>
+            <p>Fur Brush</p>
           </Link>
 
           {/* Product 2 */}
@@ -52,7 +52,7 @@ export default function Home() {
               height={350}
               width={350}
             />
-            <p>Product 2</p>
+            <p>Chew Tug Toy</p>
           </Link>
 
           {/* Product 3 */}
@@ -67,7 +67,7 @@ export default function Home() {
               height={350}
               width={350}
             />
-            <p>Product 3</p>
+            <p>Nail Clippers</p>
           </Link>
 
           {/* Product 4 */}
@@ -82,7 +82,7 @@ export default function Home() {
               height={350}
               width={350}
             />
-            <p>Product 4</p>
+            <p>Dog Cave Bed</p>
           </Link>
         </div>
       </div>
