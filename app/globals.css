@@ -40,37 +40,37 @@ a {
     color-scheme: dark;
   }
 }
-header{
+header {
   display: flex;
   justify-content: space-between;
   align-items: end;
   margin: 1rem auto;
   border-bottom: 2px grey solid;
   padding: 1em auto;
-  background: rgb(112,112,231);
+  background: rgb(112, 112, 231);
   background: linear-gradient(to top, #ffffff, #928383b1);
 }
-h1{
+h1 {
   text-align: start;
   margin: 6rem 2rem;
 }
-.home-page-products{
+.home-page-products {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 5rem;
   margin: 5rem;
 }
-footer{
+footer {
   margin: 2rem auto;
   border-top: 2px rgb(214, 214, 214) solid;
   color: black;
 }
-nav a{
-font-size: 1.3rem;
-margin-right: 1rem;
-color: black;
+nav a {
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  color: black;
 }
-nav a:hover{
+nav a:hover {
   color: silver;
 }

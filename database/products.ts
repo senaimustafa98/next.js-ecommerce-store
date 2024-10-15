@@ -1,6 +1,5 @@
-import { cache } from "react";
-import { sql } from "./connect";
-
+import { cache } from 'react';
+import { sql } from './connect';
 
 type Product = {
   id: number;
@@ -9,17 +8,24 @@ type Product = {
   price: number;
 };
 
-
-export const getProductsInsecure = cache(async()=>{
+export const getProductsInsecure = cache(async () => {
   const products = await sql<Product[]>`
-  SELECT * FROM products
+    SELECT
+      *
+    FROM
+      products
   `;
   return products;
 });
 
-export const getProductInsecure = cache(async(id: number)=>{
+export const getProductInsecure = cache(async (id: number) => {
   const products = await sql<Product[]>`
-  SELECT * FROM products WHERE id=${id}
+    SELECT
+      *
+    FROM
+      products
+    WHERE
+      id = ${id}
   `;
   return products[0];
 });

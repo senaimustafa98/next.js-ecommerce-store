@@ -25,7 +25,6 @@
   margin: 5px 0;
   font-weight: bold;
   line-height: 150%;
-
 }
 
 .removeButton {
@@ -41,14 +40,13 @@
 
 .removeButton:hover {
   background-color: #ff0000;
-
 }
-.emptyCart{
+.emptyCart {
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
 }
-.CartTitle{
+.CartTitle {
   text-align: center;
   border-bottom: 1px black solid;
 }

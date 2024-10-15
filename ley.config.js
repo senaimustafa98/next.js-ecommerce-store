@@ -8,6 +8,6 @@ const option = {
     ...postgres.camel,
     undefined: null,
   },
-}
+};
 
 export default option;
