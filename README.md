@@ -39,3 +39,19 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 - Next.js
 - Postgres.js
+- Jest
+- Playwright
+
+## Run Tests
+
+### Jest
+
+```bash
+pnpm jest
+```
+
+### Playwright
+
+```bash
+pnpm playwright test
+```

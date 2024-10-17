@@ -25,6 +25,15 @@ export default function CartPage() {
     loadCart();
   }, []);
 
+  const updateQuantity = (id: number, newQuantity: number) => {
+    const updatedCart = cartItems.map((item) =>
+      item.id === id ? { ...item, quantity: newQuantity } : item,
+    );
+
+    setCartItems(updatedCart);
+    setCartCookie(updatedCart);
+  };
+
   const removeItem = (id: number) => {
     const updatedCart = cartItems
       .map((item) =>
@@ -75,7 +84,18 @@ export default function CartPage() {
                 <h2>{item.name}</h2>
                 <div className={styles.cartPriceQuantity}>
                   <p>Price: ${item.price}</p>
-                  <p>Quantity: {item.quantity}</p>
+                  <label>
+                    Quantity:
+                    <input
+                      type="number"
+                      min="1"
+                      value={item.quantity}
+                      onChange={(e) =>
+                        updateQuantity(item.id, Number(e.target.value))
+                      }
+                      data-test-id="cart-product-quantity"
+                    />
+                  </label>
                 </div>
               </div>
               <button

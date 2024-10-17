@@ -40,3 +40,10 @@ yarn-error.log*
 next-env.d.ts
 
 .eslintcache
+node_modules/
+/test-results/
+/playwright-report/
+playwright/test-results/
+/blob-report/
+/playwright/report
+/playwright/.cache/

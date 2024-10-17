@@ -29,7 +29,7 @@ const imageMap: Record<number, string> = {
 export default function ProductPage({ product }: ProductPageProps) {
 
 
-  const [cartItems, setCartItems] = useState<Array<{ id: number; quantity: number; price: number }>>([]);
+  const [cartItems, setCartItems] = useState<Array<{ id: number; name: string; quantity: number; price: number }>>([]);
   const [quantity, setQuantity] = useState<number>(1); // Specify quantity type
 
   useEffect(() => {
@@ -51,7 +51,10 @@ export default function ProductPage({ product }: ProductPageProps) {
           : item,
       );
     } else {
-      updatedCart = [...cartItems, { id: product.id, price: product.price, quantity }];
+      updatedCart = [
+        ...cartItems,
+        { id: product.id, name: product.name, price: product.price, quantity },
+      ];
     }
 
     setCartItems(updatedCart);
