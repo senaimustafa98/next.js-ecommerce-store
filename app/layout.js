@@ -33,7 +33,7 @@ export default async function RootLayout({ children }) {
         <header>
           <nav>
             <Link href="/">
-              <Image src="/logo.svg" alt="UpLeveled" height={50} width={150} />
+              <Image src="/logo.svg" alt="UpLeveled" height={80} width={150} />
             </Link>
           </nav>
           <nav>
