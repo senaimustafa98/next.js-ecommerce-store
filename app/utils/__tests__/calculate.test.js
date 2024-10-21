@@ -1,4 +1,6 @@
 import { calculateTotal } from '../calculate';
+import { describe, expect, test } from '@jest/globals';
+
 describe('calculateTotal', () => {
   test('should return 0 for an empty array', () => {
     expect(calculateTotal([])).toBe(0);

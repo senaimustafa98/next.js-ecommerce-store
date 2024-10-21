@@ -1,14 +1,10 @@
-import { notFound } from 'next/navigation';
 import { getProductInsecure } from '../../../database/products';
 import ProductPage from './ProductPage';
 
 export default async function ProductDetailPage({ params }) {
-  const { id } = await params; // Await params directly and destructure the id
+  const { id } = params; // Directly destructure params
   const product = await getProductInsecure(Number(id));
 
-  if (!product) {
-    notFound();
-  }
-
+  // Assuming getProductInsecure throws an error if the product is not found
   return <ProductPage product={product} />;
 }

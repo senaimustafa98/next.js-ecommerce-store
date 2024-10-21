@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import CartPage from '../../cart/page';
+import CartPage from '../../components/CartPage';
 import { getCartCookie, setCartCookie } from '../cookies';
 import '@testing-library/jest-dom';
-
+import { describe, expect, test, jest, beforeEach } from '@jest/globals';
 
 jest.mock('../cookies', () => ({
   getCartCookie: jest.fn(),
@@ -19,27 +19,33 @@ describe('CartPage', () => {
     getCartCookie.mockResolvedValue(mockCartItems);
   });
 
-  test('should render cart items', async () => {
-    await act(async () => {
+  test('should render cart items', () => {
+    act(() => {
       render(<CartPage />);
     });
-    expect(await screen.findByText(/Your Cart/i)).toBeInTheDocument();
+
+    // Await the expected results
+    expect(screen.getByText(/Your Cart/i)).toBeInTheDocument();
     expect(screen.getByText('Product 1')).toBeInTheDocument();
     expect(screen.getByText('Product 2')).toBeInTheDocument();
   });
 
-  test('should remove an item from the cart', async () => {
-    await act(async () => {
+  test('should remove an item from the cart', () => {
+    act(() => {
       render(<CartPage />);
     });
-    fireEvent.click(screen.getAllByRole('button', { name: 'Remove' })[0]); // Click the first Remove button
+
+    // Click the first Remove button
+    fireEvent.click(screen.getAllByRole('button', { name: 'Remove' })[0]);
     expect(setCartCookie).toHaveBeenCalled();
   });
 
-  test('should remove all items from the cart', async () => {
-    await act(async () => {
+  test('should remove all items from the cart', () => {
+    act(() => {
       render(<CartPage />);
     });
+
+    // Click the Remove All button
     fireEvent.click(screen.getByText('Remove All'));
     expect(setCartCookie).toHaveBeenCalledWith([]);
   });

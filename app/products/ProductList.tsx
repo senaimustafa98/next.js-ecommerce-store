@@ -22,11 +22,13 @@ export default function ProductList({ products }: ProductListProps) {
   const [quantities, setQuantities] = useState<Record<number, number>>({}); // Track quantity for each product
 
   useEffect(() => {
-    const fetchCart = async () => {
-      const initialCart = await getCartCookie();
-      setCartItems(initialCart || []);
-    };
-    fetchCart();
+    getCartCookie()
+      .then((initialCart) => {
+        setCartItems(initialCart || []);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch cart items', error);
+      });
   }, []);
 
   const addToCart = async (product: Product) => {
@@ -36,7 +38,9 @@ export default function ProductList({ products }: ProductListProps) {
 
     if (foundProduct) {
       updatedCart = cartItems.map((item) =>
-        item.id === product.id ? { ...item, quantity: (item.quantity || 0) + quantity } : item,
+        item.id === product.id
+          ? { ...item, quantity: (item.quantity || 0) + quantity }
+          : item,
       );
     } else {
       updatedCart = [...cartItems, { ...product, quantity }];
@@ -63,8 +67,8 @@ export default function ProductList({ products }: ProductListProps) {
         />
       </Head>
       <div className={styles.productGrid}>
-        {products?.map((product) => (
-          <div key={product.id} className={styles.productCard}>
+        {products.map((product) => (
+          <div key={`product-${product.id}`} className={styles.productCard}>
             <Image
               src={`/images/${imageMap[product.id]}`}
               alt={product.name}

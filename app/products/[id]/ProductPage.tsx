@@ -16,7 +16,14 @@ interface Product {
 }
 
 interface ProductPageProps {
-  product: Product;
+  product: Product | null; // Allow product to be null
+}
+
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
 }
 
 const imageMap: Record<number, string> = {
@@ -27,44 +34,56 @@ const imageMap: Record<number, string> = {
 };
 
 export default function ProductPage({ product }: ProductPageProps) {
-
-
-  const [cartItems, setCartItems] = useState<Array<{ id: number; name: string; quantity: number; price: number }>>([]);
-  const [quantity, setQuantity] = useState<number>(1); // Specify quantity type
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
-    const fetchCart = async () => {
-      const initialCart = await getCartCookie();
-      setCartItems(initialCart || []);
-    };
-    fetchCart();
+    getCartCookie()
+      .then((initialCart) => {
+        setCartItems(initialCart || []);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch cart:', error);
+      });
   }, []);
 
   const addToCart = async () => {
-    const foundProduct = cartItems.find((item) => item.id === product.id);
-    let updatedCart;
+    if (!product) return; // Safeguard to prevent accessing product properties when it's null
 
-    if (foundProduct) {
-      updatedCart = cartItems.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + quantity }
-          : item,
-      );
-    } else {
-      updatedCart = [
-        ...cartItems,
-        { id: product.id, name: product.name, price: product.price, quantity },
-      ];
+    try {
+      const foundProduct = cartItems.find((item) => item.id === product.id);
+      let updatedCart: CartItem[];
+
+      if (foundProduct) {
+        updatedCart = cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item,
+        );
+      } else {
+        updatedCart = [
+          ...cartItems,
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity,
+          } as CartItem,
+        ];
+      }
+
+      setCartItems(updatedCart);
+      await setCartCookie(updatedCart);
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
     }
-
-    setCartItems(updatedCart);
-    await setCartCookie(updatedCart);
   };
 
+  // Handle not found case (no .then or async)
   if (!product) {
-    notFound();
+    notFound(); // Simply call notFound without awaiting or chaining
+    return null; // Return null to ensure the function exits
   }
-
 
   return (
     <>

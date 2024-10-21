@@ -1,7 +1,6 @@
-// app/utils/__tests__/cartUtils.test.js
-
-import { calculateTotal } from '../calculate'; // Adjust the path as necessary
+import { calculateTotal } from '../calculate';
 import { getCartItems } from '../cookies';
+import { describe, expect, test, jest } from '@jest/globals';
 
 // Mock the cookie functions
 jest.mock('../cookies', () => ({
@@ -16,7 +15,7 @@ describe('Cart Utility Functions', () => {
     ];
 
     const total = calculateTotal(mockCartItems);
-    expect(total).toBe(69.97); // 19.99 * 2 + 29.99
+    expect(total).toBe(69.97);
   });
 
   test('should retrieve cart items from cookies', async () => {
