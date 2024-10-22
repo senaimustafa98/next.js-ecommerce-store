@@ -35,17 +35,9 @@ export default async function RootLayout({ children }) {
             <Link href="/">
               <Image src="/logo.svg" alt="UpLeveled" height={80} width={150} />
             </Link>
-          </nav>
-          <nav>
             <Link href="/">Home</Link>
-          </nav>
-          <nav>
             <Link href="/products" data-test-id="products-link">Products</Link>
-          </nav>
-          <nav>
             <Link href="/cart" data-test-id="cart-link">Cart ({cartCount})</Link>
-          </nav>
-          <nav>
             <Link href="/checkout">Checkout</Link>
           </nav>
         </header>
