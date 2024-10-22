@@ -65,3 +65,17 @@
 .removeAllButton:hover {
   background-color: #000000;
 }
+.checkoutButton{
+  background-color: green;
+  display: flex;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-items: center;
+}
+.checkoutButton:hover{
+  background-color: #000000;
+}

@@ -5,7 +5,7 @@ export default function ThankYouPage() {
   return (
     <>
       <Head>
-        <title>Thank-you Page</title>
+        <title>Thank you for your order</title>
         <meta
           name="description"
           content="Thank you for your order! We appreciate your business and will process your order shortly."

@@ -99,62 +99,74 @@ export default function CheckOutForm() {
           placeholder="First Name"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-first-name" // Added test id
         />
         <input
           name="lastName"
           placeholder="Last Name"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-last-name" // Added test id
         />
         <input
           name="email"
           placeholder="Email"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-email" // Added test id
         />
         <input
           name="address"
           placeholder="Address"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-address" // Added test id
         />
         <input
           name="city"
           placeholder="City"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-city" // Added test id
         />
         <input
           name="postalCode"
           placeholder="Postal Code"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-postal-code" // Added test id
         />
         <input
           name="country"
           placeholder="Country"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-country" // Added test id
         />
         <input
           name="cardNumber"
           placeholder="Credit Card Number"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-credit-card" // Added test id
         />
         <input
           name="expirationDate"
           placeholder="Expiration Date (MM/YY)"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-expiration-date" // Added test id
         />
         <input
           name="securityCode"
           placeholder="Security Code"
           onChange={handleChange}
           className={styles.formInput}
+          data-test-id="checkout-security-code" // Added test id
         />
-        <button className={styles.submitButton}>Confirm Order</button>
+        <button className={styles.submitButton} data-test-id="checkout-confirm-order">
+          Confirm Order
+        </button>
       </form>
     </div>
   );

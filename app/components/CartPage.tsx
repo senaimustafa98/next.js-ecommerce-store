@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getCartCookie, setCartCookie } from '../utils/cookies';
 import styles from './cart.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface CartItem {
   id: number;
@@ -14,6 +15,7 @@ interface CartItem {
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
     getCartCookie()
@@ -49,6 +51,10 @@ const CartPage = () => {
     await setCartCookie([]);
   };
 
+  const handleCheckout = () => {
+    router.push('/checkout');
+  };
+
   const imageMap: Record<number, string> = {
     1: 'dogbrush.jpg',
     2: 'dogtoy.jpg',
@@ -56,45 +62,63 @@ const CartPage = () => {
     4: 'dogcave.jpg',
   };
 
+  // Calculate total price
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0,
+  );
+
   return (
     <div>
       <h1 className={styles.CartTitle}>Your Cart</h1>
       {cartItems.length ? (
-        cartItems.map((item) => (
-          <div key={`cart-item-${item.id}`} className={styles.cartItem}>
-            <Image
-              src={`/images/${imageMap[item.id]}`}
-              alt={item.name || 'Product image'}
-              width={200}
-              height={200}
-              className={styles.productImage}
-            />
-            <div className={styles.cartDetails}>
-              <h2>{item.name}</h2>
-              <div className={styles.cartPriceQuantity}>
-                <p>Price: ${item.price}</p>
-                <label>
-                  Quantity:
-                  <input
-                    type="number"
-                    min="1"
-                    value={item.quantity}
-                    onChange={(e) =>
-                      updateQuantity(item.id, Number(e.target.value))
-                    }
-                    data-test-id="cart-product-quantity"
-                  />
-                </label>
-              </div>
-            </div>
-            <button
-              onClick={() => removeItem(item.id)}
-              className={styles.removeButton}
+        <>
+          {cartItems.map((item) => (
+            <div
+              key={`cart-item-${item.id}`}
+              className={styles.cartItem}
+              data-test-id={`cart-product-${item.id}`}
             >
-              Remove
-            </button>
-          </div>
-        ))
+              <Image
+                src={`/images/${imageMap[item.id]}`}
+                alt={item.name || 'Product image'}
+                width={200}
+                height={200}
+                className={styles.productImage}
+              />
+              <div className={styles.cartDetails}>
+                <h2>{item.name}</h2>
+                <div className={styles.cartPriceQuantity}>
+                  <p>Price: ${item.price}</p>
+                  <label>
+                    Quantity:
+                    <input
+                      type="number"
+                      min="1"
+                      value={item.quantity}
+                      onChange={(e) =>
+                        updateQuantity(item.id, Number(e.target.value))
+                      }
+                      data-test-id={`cart-product-quantity-${item.id}`}
+                    />
+                  </label>
+                  <p>Subtotal: ${item.price * item.quantity}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => removeItem(item.id)}
+                className={styles.removeButton}
+                data-test-id={`cart-product-remove-${item.id}`}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <p data-test-id="cart-total">Total Price: ${totalPrice}</p>
+          <button className={styles.checkoutButton} data-test-id="cart-checkout" onClick={handleCheckout}>
+            Checkout
+          </button>
+        </>
       ) : (
         <p className={styles.emptyCart}>Cart is empty.</p>
       )}

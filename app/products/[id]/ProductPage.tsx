@@ -102,9 +102,12 @@ export default function ProductPage({ product }: ProductPageProps) {
           alt={product.name}
           width={350}
           height={350}
+          data-test-id="product-image" // Add the test id for the image
         />
         <p className={styles.productDescription}>{product.description}</p>
-        <p className={styles.productPrice}>Price: ${product.price}</p>
+        <p className={styles.productPrice} data-test-id="product-price">
+          Price: {product.price}
+        </p>
         <label>
           Quantity:
           <input
