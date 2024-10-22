@@ -1,13 +1,12 @@
-import { postgresConfig, setEnvironmentVariables } from './util/config.js';
+import { postgresConfig, setEnvironmentVariables } from './app/utils/config.js';
 
 setEnvironmentVariables();
 
-/* const option = {
+/*  const option = {
   transform: {
     ...postgres.camel,
     undefined: null,
   },
 }; */
-
 
 export default postgresConfig;
