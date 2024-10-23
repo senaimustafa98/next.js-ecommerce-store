@@ -106,7 +106,7 @@ export default function ProductPage({ product }: ProductPageProps) {
         />
         <p className={styles.productDescription}>{product.description}</p>
         <p className={styles.productPrice} data-test-id="product-price">
-          Price: {product.price}
+          Price: {product.price ? product.price.toFixed(2) : 'N/A'}
         </p>
         <label>
           Quantity:
