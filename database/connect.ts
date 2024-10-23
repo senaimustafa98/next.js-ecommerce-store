@@ -1,6 +1,7 @@
 import 'server-only';
 
-import postgres, { Sql } from 'postgres';
+import postgres from 'postgres';
+import type { Sql } from 'postgres';
 
 declare module globalThis {
   let postgresSqlClient: Sql;
