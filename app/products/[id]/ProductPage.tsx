@@ -84,6 +84,11 @@ export default function ProductPage({ product }: ProductPageProps) {
     return null; // Return null to ensure the function exits
   }
 
+ /*  const formattedPrice = product.price ? product.price.toFixed(2) : 'N/A';
+  console.log('Formatted Price:', formattedPrice); */
+
+
+
   return (
     <>
       <Head>
@@ -105,7 +110,7 @@ export default function ProductPage({ product }: ProductPageProps) {
         />
         <p className={styles.productDescription}>{product.description}</p>
         <p className={styles.productPrice} data-test-id="product-price">
-          Price: {isNaN(product.price) ? 'N/A' : `$${product.price.toFixed(2)}`}
+
         </p>
 
         <label>
