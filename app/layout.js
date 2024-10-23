@@ -37,9 +37,6 @@ export default async function RootLayout({ children }) {
             </Link>
           </nav>
           <nav>
-            <Link href="/" data-test-id="home-link">Home</Link>
-          </nav>
-          <nav>
             <Link href="/products" data-test-id="products-link">Products</Link>
           </nav>
           <nav>

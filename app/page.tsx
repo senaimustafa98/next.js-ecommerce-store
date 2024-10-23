@@ -15,7 +15,7 @@ export default function Home() {
         <h2>Find almost everything your dog needs!</h2>
         <Link
           href="/products"
-          data-test-id="products-link"
+          data-test-id="shop-now-link"
           className={styles.shopNowButton}
         >
           Shop Now
