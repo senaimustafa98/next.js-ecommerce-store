@@ -120,7 +120,7 @@ const CartPage = () => {
           </button>
         </>
       ) : (
-        <p className={styles.emptyCart}>Cart is empty.</p>
+        <p className={styles.emptyCart} data-test-id="empty-cart-message">Cart is empty.</p>
       )}
       <button onClick={removeAllItems} className={styles.removeAllButton}>
         Remove All
