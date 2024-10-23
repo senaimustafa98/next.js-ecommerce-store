@@ -14,9 +14,6 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
@@ -35,42 +32,36 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
 header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin: 1rem auto;
-  border-bottom: 2px grey solid;
-  padding: 1em auto;
-  background: rgb(112, 112, 231);
+  align-items: center; /* Center items vertically */
+  padding: 1em; /* Add padding */
   background: linear-gradient(to top, #ffffff, #928383b1);
+  border-bottom: 2px grey solid;
 }
+
 h1 {
   text-align: start;
   margin: 6rem 2rem;
 }
-.home-page-products {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5rem;
-  margin: 5rem;
-}
+
 footer {
   margin: 2rem auto;
   border-top: 2px rgb(214, 214, 214) solid;
   color: black;
 }
+
+nav {
+  margin: 0.5rem; /* Adjust margin for better spacing */
+}
+
 nav a {
   font-size: 1.3rem;
   margin-right: 1rem;
   color: black;
 }
+
 nav a:hover {
   color: silver;
 }

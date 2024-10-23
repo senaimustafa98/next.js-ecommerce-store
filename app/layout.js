@@ -1,4 +1,4 @@
-import './globals.css';
+import styles from './globals.css';
 import Image from 'next/image';
 import localFont from 'next/font/local';
 import Link from 'next/link';
@@ -30,11 +30,14 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>
+        <header className={styles.header}>
           <nav>
             <Link href="/" data-test-id="home-link">
               <Image src="/logo.svg" alt="UpLeveled" height={80} width={150} />
             </Link>
+          </nav>
+          <nav>
+            <Link href="/" data-test-id="home-link">Home</Link>
           </nav>
           <nav>
             <Link href="/products" data-test-id="products-link">Products</Link>

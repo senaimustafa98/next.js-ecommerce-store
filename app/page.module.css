@@ -11,8 +11,6 @@
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
-  text-align: center;
-  color: rgb(255, 255, 255);
 }
 
 .hero h2 {
@@ -63,9 +61,7 @@
   background-color: #f4f4f4;
   border-radius: 10px;
   padding: 20px;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .productLink:hover {
