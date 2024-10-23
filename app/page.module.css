@@ -6,11 +6,11 @@
   background-position: center;
   color: #fff;
 }
-
 .hero h1 {
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
+  text-align: center;
 }
 
 .hero h2 {

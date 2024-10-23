@@ -114,7 +114,7 @@ const CartPage = () => {
               </button>
             </div>
           ))}
-          <p data-test-id="cart-total">Total Price: ${totalPrice}</p>
+          <p data-test-id="cart-total">Total Price: ${totalPrice.toFixed(2)}</p>
           <button
             className={styles.checkoutButton}
             data-test-id="cart-checkout"

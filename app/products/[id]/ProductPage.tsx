@@ -46,7 +46,7 @@ export default function ProductPage({ product }: ProductPageProps) {
         console.error('Failed to fetch cart:', error);
       });
   }, []);
-
+  console.log(product);
   const addToCart = async () => {
     if (!product) return; // Safeguard to prevent accessing product properties when it's null
 
@@ -101,11 +101,11 @@ export default function ProductPage({ product }: ProductPageProps) {
           alt={product.name}
           width={350}
           height={350}
-          data-test-id="product-image" // Add the test id for the image
+          data-test-id="product-image"
         />
         <p className={styles.productDescription}>{product.description}</p>
         <p className={styles.productPrice} data-test-id="product-price">
-          Price: {product.price ? product.price.toFixed(2) : 'N/A'}
+          Price: {product.price != null ? product.price.toFixed(2) : 'N/A'}
         </p>
         <label>
           Quantity:
