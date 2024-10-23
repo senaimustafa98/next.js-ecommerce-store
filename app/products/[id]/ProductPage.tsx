@@ -84,18 +84,6 @@ export default function ProductPage({ product }: ProductPageProps) {
     return null; // Return null to ensure the function exits
   }
 
-
-
-  /* // Log the rendered price
-  useEffect(() => {
-    const priceElement = document.querySelector('[data-test-id="product-price"]');
-    if (priceElement) {
-      console.log('Rendered HTML for Price:', priceElement.textContent);
-    } else {
-      console.log('Price element not found.');
-    }
-  }, [product]); */
-
   return (
     <>
       <Head>
@@ -117,8 +105,9 @@ export default function ProductPage({ product }: ProductPageProps) {
         />
         <p className={styles.productDescription}>{product.description}</p>
         <p className={styles.productPrice} data-test-id="product-price">
-          Price: ${product.price.toFixed(2)}
+          Price: {isNaN(product.price) ? 'N/A' : `$${product.price.toFixed(2)}`}
         </p>
+
         <label>
           Quantity:
           <input
