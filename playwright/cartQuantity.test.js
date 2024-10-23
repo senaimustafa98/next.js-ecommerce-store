@@ -16,7 +16,9 @@ test('Change quantity of item in cart', async ({ page }) => {
   await page.goto('http://localhost:3000/cart');
 
   // Change quantity for the first item in the cart
-  const cartQuantityInput = page.locator('[data-test-id="cart-product-quantity-1"]');
+  const cartQuantityInput = page.locator(
+    '[data-test-id="cart-product-quantity-1"]',
+  );
   await cartQuantityInput.fill('2'); // Sets the quantity to 2
 
   // Verify that the quantity input now has a value of 2

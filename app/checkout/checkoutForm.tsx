@@ -164,7 +164,10 @@ export default function CheckOutForm() {
           className={styles.formInput}
           data-test-id="checkout-security-code"
         />
-        <button className={styles.submitButton} data-test-id="checkout-confirm-order">
+        <button
+          className={styles.submitButton}
+          data-test-id="checkout-confirm-order"
+        >
           Confirm Order
         </button>
       </form>

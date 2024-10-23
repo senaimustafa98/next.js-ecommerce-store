@@ -115,12 +115,18 @@ const CartPage = () => {
             </div>
           ))}
           <p data-test-id="cart-total">Total Price: ${totalPrice}</p>
-          <button className={styles.checkoutButton} data-test-id="cart-checkout" onClick={handleCheckout}>
+          <button
+            className={styles.checkoutButton}
+            data-test-id="cart-checkout"
+            onClick={handleCheckout}
+          >
             Checkout
           </button>
         </>
       ) : (
-        <p className={styles.emptyCart} data-test-id="empty-cart-message">Cart is empty.</p>
+        <p className={styles.emptyCart} data-test-id="empty-cart-message">
+          Cart is empty.
+        </p>
       )}
       <button onClick={removeAllItems} className={styles.removeAllButton}>
         Remove All

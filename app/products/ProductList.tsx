@@ -70,22 +70,24 @@ export default function ProductList({ products }: ProductListProps) {
       <div className={styles.productGrid}>
         {products.map((product) => (
           <div key={`product-${product.id}`} className={styles.productCard}>
-            <Link href={`/products/${product.id}`} data-test-id={`product-${product.id}`}>
-
-                <Image
-                  src={`/images/${imageMap[product.id]}`}
-                  alt={product.name}
-                  width={200}
-                  height={200}
-                  className={styles.productImage}
-                  data-test-id="product-image"
-                />
-                <h3 className={styles.productName}>{product.name}</h3>
-
+            <Link
+              href={`/products/${product.id}`}
+              data-test-id={`product-${product.id}`}
+            >
+              <Image
+                src={`/images/${imageMap[product.id]}`}
+                alt={product.name}
+                width={200}
+                height={200}
+                className={styles.productImage}
+                data-test-id="product-image"
+              />
+              <h3 className={styles.productName}>{product.name}</h3>
             </Link>
             <p className={styles.productPrice} data-test-id="product-price">
-              Price: {product.price}
+              Price: {product.price ? product.price.toFixed(2) : 'N/A'}
             </p>
+
             <label>
               Quantity:
               <input

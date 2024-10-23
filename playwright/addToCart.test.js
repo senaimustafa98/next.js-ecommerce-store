@@ -15,6 +15,8 @@ test('Add to cart', async ({ page }) => {
   await page.goto('http://localhost:3000/cart');
 
   // Verify that the quantity input now has a value of 2
-  const cartQuantityInput = page.locator('[data-test-id="cart-product-quantity-1"]');
+  const cartQuantityInput = page.locator(
+    '[data-test-id="cart-product-quantity-1"]',
+  );
   await expect(cartQuantityInput).toHaveValue('2'); // Check that the quantity in the cart is 2
 });

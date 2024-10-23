@@ -65,7 +65,7 @@
 .removeAllButton:hover {
   background-color: #000000;
 }
-.checkoutButton{
+.checkoutButton {
   background-color: green;
   display: flex;
   color: white;
@@ -76,6 +76,6 @@
   margin-top: 20px;
   align-items: center;
 }
-.checkoutButton:hover{
+.checkoutButton:hover {
   background-color: #000000;
 }

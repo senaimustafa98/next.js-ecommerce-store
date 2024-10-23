@@ -37,16 +37,24 @@ export default async function RootLayout({ children }) {
             </Link>
           </nav>
           <nav>
-            <Link href="/" data-test-id="home-link">Home</Link>
+            <Link href="/" data-test-id="home-link">
+              Home
+            </Link>
           </nav>
           <nav>
-            <Link href="/products" data-test-id="products-link">Products</Link>
+            <Link href="/products" data-test-id="products-link">
+              Products
+            </Link>
           </nav>
           <nav>
-            <Link href="/cart" data-test-id="cart-link">Cart ({cartCount})</Link>
+            <Link href="/cart" data-test-id="cart-link">
+              Cart ({cartCount})
+            </Link>
           </nav>
           <nav>
-            <Link href="/checkout" data-test-id="checkout-link">Checkout</Link>
+            <Link href="/checkout" data-test-id="checkout-link">
+              Checkout
+            </Link>
           </nav>
         </header>
         <main>{children}</main>
