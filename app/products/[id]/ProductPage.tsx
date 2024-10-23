@@ -79,7 +79,7 @@ export default function ProductPage({ product }: ProductPageProps) {
     }
   };
 
-  // Handle not found case (no .then or async)
+
   if (!product) {
     notFound(); // Simply call notFound without awaiting or chaining
     return null; // Return null to ensure the function exits
