@@ -28,8 +28,11 @@ const CartPage = () => {
   }, []);
 
   const updateQuantity = async (id: number, newQuantity: number) => {
-    const updatedCart = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: newQuantity } : item,
+    const updatedCart = cartItems.map(
+      (item) =>
+        item.id === id
+          ? { ...item, quantity: newQuantity, price: item.price || 0 }
+          : item, // Ensure price is valid
     );
     setCartItems(updatedCart);
     await setCartCookie(updatedCart);

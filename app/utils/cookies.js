@@ -9,8 +9,17 @@ export async function getCartCookie() {
 }
 
 export async function setCartCookie(cart) {
+  const validatedCart = cart.map((item) => ({
+    ...item,
+    price: item.price || 0,
+    quantity: item.quantity || 1,
+  }));
+
   const cookieStore = await cookies();
-  cookieStore.set('cart', JSON.stringify(cart), { path: '/', httpOnly: true });
+  cookieStore.set('cart', JSON.stringify(validatedCart), {
+    path: '/',
+    httpOnly: true,
+  });
 }
 
 export async function deleteCookie(name) {
