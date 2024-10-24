@@ -107,8 +107,9 @@ export default function ProductPage({ product }: ProductPageProps) {
           data-test-id="product-image"
         />
         <p className={styles.productDescription}>{product.description}</p>
-        <p className={styles.productPrice} data-test-id="product-price">
-          Price: {isNaN(product.price) ? 'N/A' : `$${product.price.toFixed(2)}`}
+          Price:
+        <p data-test-id="product-price">
+          {isNaN(product.price) ? 'N/A' : `$${product.price.toFixed(2)}`}
         </p>
 
         <label>
