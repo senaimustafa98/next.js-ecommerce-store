@@ -11,9 +11,8 @@ export async function getCartCookie() {
 export async function setCartCookie(cart) {
   const validatedCart = cart.map((item) => ({
     ...item,
-    price: item.price || 0,
-    cost: item.price || 0,
-    quantity: item.quantity || 1,
+    price: Number(item.price) || 0,
+    quantity: Number(item.quantity) || 1,
   }));
 
   const cookieStore = await cookies();
