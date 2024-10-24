@@ -12,6 +12,7 @@ export async function setCartCookie(cart) {
   const validatedCart = cart.map((item) => ({
     ...item,
     price: item.price || 0,
+    cost: item.price || 0,
     quantity: item.quantity || 1,
   }));
 
